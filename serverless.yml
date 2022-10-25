@@ -1,0 +1,100 @@
+service: doppler-system-usage
+frameworkVersion: "3"
+useDotenv: true
+
+package:
+  individually: true
+
+provider:
+  name: aws
+  region: ${env:REGION}
+  runtime: nodejs16.x
+  architecture: arm64
+  deploymentBucket:
+    name: doppler-fun-${sls:stage}-${env:REGION}
+
+  httpApi:
+    shouldStartNameWithService: true
+    disableDefaultEndpoint: true
+    metrics: true
+    cors:
+      allowedOrigins:
+        - https://app.fromdoppler.com
+        - https://app2.fromdoppler.com
+        - https://appint.fromdoppler.net
+        - https://appqa.fromdoppler.net
+        - https://webappint.fromdoppler.net
+        - https://webappqa.fromdoppler.net
+      allowedHeaders:
+        - Content-Type
+        - Authorization
+      allowedMethods:
+        - GET
+        - POST
+      allowCredentials: true
+
+  logs:
+    httpApi: true
+
+  iam:
+    role:
+      statements:
+        - Effect: "Allow"
+          Action:
+            - "dynamodb:PutItem"
+            - "dynamodb:Get*"
+            - "dynamodb:Scan"
+            - "dynamodb:UpdateItem"
+            - "dynamodb:DeleteItem"
+          Resource: "arn:aws:dynamodb:${env:REGION}:${aws:accountId}:table\
+            /${self:service}-${sls:stage}-user-system-usage"
+
+  environment:
+    DYNAMODB_USER_TABLE: ${self:service}-${sls:stage}-user-system-usage
+
+plugins:
+  - serverless-bundle
+  - serverless-domain-manager
+  - serverless-dotenv-plugin
+  - serverless-offline
+
+functions:
+  getUser:
+    handler: src/getUser.getUser
+    events:
+      - httpApi:
+          path: /{email}
+          method: get
+  visitReportsSection:
+    handler: src/visitReportsSection.visitReportsSection
+    events:
+      - httpApi:
+          path: /{email}/visit-reports-section
+          method: post
+
+resources:
+  Resources:
+    UserTable:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        AttributeDefinitions:
+          - AttributeName: email
+            AttributeType: S
+        BillingMode: PAY_PER_REQUEST
+        KeySchema:
+          - AttributeName: email
+            KeyType: HASH
+        TableName: ${self:service}-${sls:stage}-user-system-usage
+
+custom:
+  bundle:
+    packager: "yarn"
+    disableForkTsChecker: false
+    linting: true
+  customDomain:
+    domainName: ${env:DOMAIN}
+    basePath: ${self:service}
+    apiType: http
+    createRoute53Record: false
+    endpointType: REGIONAL
+    autoDomain: false
