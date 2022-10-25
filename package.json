@@ -22,7 +22,7 @@
   "devDependencies": {
     "@types/aws-lambda": "8.10.108",
     "@types/jest": "29.2.0",
-    "@types/jsonwebtoken": "^8.5.9",
+    "@types/jsonwebtoken": "8.5.9",
     "eclint": "2.8.1",
     "prettier": "2.7.1",
     "serverless-bundle": "5.5.0",
