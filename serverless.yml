@@ -47,10 +47,10 @@ provider:
             - "dynamodb:UpdateItem"
             - "dynamodb:DeleteItem"
           Resource: "arn:aws:dynamodb:${env:REGION}:${aws:accountId}:table\
-            /${self:service}-${sls:stage}-user-system-usage"
+            /${self:service}-${sls:stage}-user"
 
   environment:
-    DYNAMODB_USER_TABLE: ${self:service}-${sls:stage}-user-system-usage
+    DYNAMODB_USER_TABLE: ${self:service}-${sls:stage}-user
 
 plugins:
   - serverless-bundle
@@ -84,7 +84,7 @@ resources:
         KeySchema:
           - AttributeName: email
             KeyType: HASH
-        TableName: ${self:service}-${sls:stage}-user-system-usage
+        TableName: ${self:service}-${sls:stage}-user
 
 custom:
   bundle:
