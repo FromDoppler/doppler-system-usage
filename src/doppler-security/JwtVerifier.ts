@@ -14,7 +14,7 @@ export class JwtVerifier {
     try {
       const payload = verify(token, this._publicKey, { complete: false });
 
-      if (typeof payload !== "string" && !payload["exp"]) {
+      if (!payload["exp"]) {
         return { success: false, error: new JsonWebTokenError("exp required") };
       }
 
@@ -25,23 +25,14 @@ export class JwtVerifier {
   }
 
   private mapTokenData(payload: JwtPayload | string): TokenData {
-    return typeof payload === "string"
-      ? {
-          isSuperUser: false,
-          dopplerUserId: null,
-          dopplerUserEmail: null,
-        }
-      : {
-          isSuperUser: "isSU" in payload && payload["isSU"] === true,
-          dopplerUserId:
-            "nameid" in payload && typeof payload["nameid"] === "number"
-              ? payload["nameid"]
-              : null,
-          dopplerUserEmail:
-            "unique_name" in payload &&
-            typeof payload["unique_name"] === "string"
-              ? payload["unique_name"]
-              : null,
-        };
+    return {
+      isSuperUser: payload["isSU"] === true,
+      dopplerUserId:
+        typeof payload["nameid"] === "number" ? payload["nameid"] : null,
+      dopplerUserEmail:
+        typeof payload["unique_name"] === "string" && payload["unique_name"]
+          ? payload["unique_name"]
+          : null,
+    };
   }
 }

@@ -42,12 +42,9 @@ export class JwtFilter {
 
     if (
       verificationResult.success &&
-      (("allowAllSignedTokens" in rules && rules.allowAllSignedTokens) ||
-        ("allowSuperUser" in rules &&
-          rules.allowSuperUser &&
-          verificationResult.value.isSuperUser) ||
-        ("allowUserWithEmail" in rules &&
-          rules.allowUserWithEmail &&
+      (rules.allowSimplySignedToken ||
+        (rules.allowSuperUser && verificationResult.value.isSuperUser) ||
+        (rules.allowUserWithEmail &&
           verificationResult.value.dopplerUserEmail ===
             rules.allowUserWithEmail))
     ) {
