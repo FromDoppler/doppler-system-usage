@@ -7,11 +7,11 @@ describe(JwtFilter.name, () => {
   describe.each([
     {
       tokenName: "token_Expire2033_05_18",
-      jwtFilterRules: { allowAllSignedTokens: true } as const,
+      jwtFilterRules: { allowSimplySignedToken: true } as const,
     },
     {
       tokenName: "token_Superuser_Expire2033_05_18",
-      jwtFilterRules: { allowAllSignedTokens: true } as const,
+      jwtFilterRules: { allowSimplySignedToken: true } as const,
     },
     {
       tokenName: "token_Superuser_Expire2033_05_18",
@@ -26,11 +26,11 @@ describe(JwtFilter.name, () => {
     },
     {
       tokenName: "token_SuperuserFalse_Expire2033_05_18",
-      jwtFilterRules: { allowAllSignedTokens: true } as const,
+      jwtFilterRules: { allowSimplySignedToken: true } as const,
     },
     {
       tokenName: "token_Account_123_test1AtTestDotCom_Expire2033_05_18",
-      jwtFilterRules: { allowAllSignedTokens: true } as const,
+      jwtFilterRules: { allowSimplySignedToken: true } as const,
     },
     {
       tokenName: "token_Account_123_test1AtTestDotCom_Expire2033_05_18",
@@ -76,6 +76,10 @@ describe(JwtFilter.name, () => {
     {
       tokenName: "token_Superuser_Expire2033_05_18",
       jwtFilterRules: { allowUserWithEmail: "otro@test.com" } as const,
+    },
+    {
+      tokenName: "token_Superuser_Expire2033_05_18",
+      jwtFilterRules: {} as const,
     },
     {
       tokenName: "token_SuperuserFalse_Expire2033_05_18",
@@ -150,7 +154,7 @@ describe(JwtFilter.name, () => {
         {
           headers: { authorization: `bearer ${token}` },
         } as unknown as APIGatewayProxyEvent,
-        { allowAllSignedTokens: true },
+        { allowSimplySignedToken: true },
         async () => {
           return {
             statusCode: 200,
@@ -193,7 +197,7 @@ describe(JwtFilter.name, () => {
         const sut = new JwtFilter({ jwtVerifier });
         const result = await sut.apply(
           { headers } as unknown as APIGatewayProxyEvent,
-          { allowAllSignedTokens: true },
+          { allowSimplySignedToken: true },
           async () => {
             return {
               statusCode: 200,
