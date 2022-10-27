@@ -25,6 +25,7 @@ provider:
         - https://appqa.fromdoppler.net
         - https://webappint.fromdoppler.net
         - https://webappqa.fromdoppler.net
+        - http://localhost:3000
       allowedHeaders:
         - Content-Type
         - Authorization
@@ -87,6 +88,8 @@ resources:
         TableName: ${self:service}-${sls:stage}-user
 
 custom:
+  serverless-offline:
+    httpPort: 3001
   bundle:
     packager: "yarn"
     disableForkTsChecker: false
