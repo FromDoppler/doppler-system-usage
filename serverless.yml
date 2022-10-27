@@ -88,6 +88,8 @@ resources:
         TableName: ${self:service}-${sls:stage}-user
 
 custom:
+  serverless-offline:
+    httpPort: 3001
   bundle:
     packager: "yarn"
     disableForkTsChecker: false
