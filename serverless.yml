@@ -26,6 +26,7 @@ provider:
         - https://webappint.fromdoppler.net
         - https://webappqa.fromdoppler.net
         - http://localhost:3000
+        - http://localhost:35740
       allowedHeaders:
         - Content-Type
         - Authorization
