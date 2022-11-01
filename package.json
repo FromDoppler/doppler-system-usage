@@ -21,7 +21,7 @@
   },
   "devDependencies": {
     "@types/aws-lambda": "8.10.108",
-    "@types/jest": "29.2.0",
+    "@types/jest": "29.2.1",
     "@types/jsonwebtoken": "8.5.9",
     "eclint": "2.8.1",
     "prettier": "2.7.1",
