@@ -46,10 +46,27 @@ export class UserService {
       .promise();
   };
 
+  registerFirstStepsClosedSince = async (
+    email: string,
+    date: Date
+  ): Promise<void> => {
+    await this._dbClient
+      .update({
+        TableName: this._userTableName,
+        Key: { email },
+        UpdateExpression: "set firstStepsClosedSince = :firstStepsClosedSince",
+        ExpressionAttributeValues: {
+          ":firstStepsClosedSince": date.toISOString(),
+        },
+      })
+      .promise();
+  };
+
   private mapUser(item: DynamoDB.AttributeMap): User {
     return {
       email: item.email as string,
       reportsSectionLastVisit: (item.reportsSectionLastVisit as string) || null,
+      firstStepsClosedSince: (item.firstStepsClosedSince as string) || null,
     };
   }
 }
