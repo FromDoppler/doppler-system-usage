@@ -29,6 +29,7 @@ describe(UserService.name, () => {
       expect(result).toEqual({
         email: "email1",
         reportsSectionLastVisit: null,
+        firstStepsClosedSince: null,
       });
     });
 
@@ -48,6 +49,7 @@ describe(UserService.name, () => {
       expect(result).toEqual({
         email: "email1",
         reportsSectionLastVisit: null,
+        firstStepsClosedSince: null,
       });
     });
   });
@@ -70,6 +72,28 @@ describe(UserService.name, () => {
           "set reportsSectionLastVisit = :reportsSectionLastVisit",
         ExpressionAttributeValues: {
           ":reportsSectionLastVisit": expectedValue,
+        },
+      });
+    });
+  });
+
+  describe("firstStepsClosedSince", () => {
+    it("Should pass the right data to db", async () => {
+      // Arrange
+      const date = new Date("Date Wed Nov 02 2022 16:00:00 GMT-0300");
+      const expectedValue = "2022-11-02T19:00:00.000Z";
+      const { dbClientDouble, TableName, sut } = createTestContext();
+
+      // Act
+      await sut.registerFirstStepsClosedSince("email1", date);
+
+      // Assert
+      expect(dbClientDouble.update).toHaveBeenCalledWith({
+        TableName,
+        Key: { email: "email1" },
+        UpdateExpression: "set firstStepsClosedSince = :firstStepsClosedSince",
+        ExpressionAttributeValues: {
+          ":firstStepsClosedSince": expectedValue,
         },
       });
     });

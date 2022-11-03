@@ -76,6 +76,12 @@ functions:
       - httpApi:
           path: /{email}/visit-reports-section
           method: post
+  firstStepsClosedSince:
+    handler: src/firstStepsClosedSince.firstStepsClosedSince
+    events:
+      - htppApi:
+          path: /{email}/close-first-steps
+          method: post
 
 resources:
   Resources:
