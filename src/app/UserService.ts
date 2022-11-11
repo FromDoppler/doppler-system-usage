@@ -62,6 +62,15 @@ export class UserService {
       .promise();
   };
 
+  deleteFlags = async (email: string): Promise<void> => {
+    await this._dbClient
+      .delete({
+        TableName: this._userTableName,
+        Key: { email },
+      })
+      .promise();
+  };
+
   private mapUser(item: DynamoDB.AttributeMap): User {
     return {
       email: item.email as string,

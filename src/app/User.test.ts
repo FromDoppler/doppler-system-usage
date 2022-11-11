@@ -98,12 +98,29 @@ describe(UserService.name, () => {
       });
     });
   });
+
+  describe("deleteFlags", () => {
+    it("Should pass the delete instruction to the db", async () => {
+      // Arrange
+      const { dbClientDouble, TableName, sut } = createTestContext();
+
+      // Act
+      await sut.deleteFlags("email1");
+
+      // Assert
+      expect(dbClientDouble.delete).toHaveBeenCalledWith({
+        TableName,
+        Key: { email: "email1" },
+      });
+    });
+  });
 });
 
 function createTestContext() {
   const dbClientDouble = {
     update: jest.fn(() => createPromiseWrapper()),
     get: jest.fn(() => createPromiseWrapper(() => ({ Item: undefined }))),
+    delete: jest.fn(() => createPromiseWrapper()),
   };
   const userTableName = "userTableName";
   const sut = new UserService({

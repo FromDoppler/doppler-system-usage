@@ -36,6 +36,7 @@ provider:
       allowedMethods:
         - GET
         - POST
+        - DELETE
       allowCredentials: true
 
   logs:
@@ -82,6 +83,12 @@ functions:
       - httpApi:
           path: /{email}/close-first-steps
           method: post
+  deleteFlags:
+    handler: src/deleteFlags.deleteFlags
+    events:
+      - httpApi:
+          path: /{email}
+          method: delete
 
 resources:
   Resources:
