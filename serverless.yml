@@ -79,7 +79,7 @@ functions:
   firstStepsClosedSince:
     handler: src/firstStepsClosedSince.firstStepsClosedSince
     events:
-      - htppApi:
+      - httpApi:
           path: /{email}/close-first-steps
           method: post
 
