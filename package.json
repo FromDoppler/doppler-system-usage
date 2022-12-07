@@ -24,7 +24,7 @@
     "@types/jest": "29.2.4",
     "@types/jsonwebtoken": "8.5.9",
     "eclint": "2.8.1",
-    "prettier": "2.8.0",
+    "prettier": "2.8.1",
     "serverless-bundle": "5.5.0",
     "serverless-domain-manager": "6.2.1",
     "serverless-dotenv-plugin": "4.0.2",
