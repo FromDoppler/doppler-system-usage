@@ -73,7 +73,7 @@
     "@aws-sdk/types" "3.226.0"
     tslib "^2.3.1"
 
-"@aws-sdk/client-lambda@^3.224.0":
+"@aws-sdk/client-lambda@^3.226.0":
   version "3.226.0"
   resolved "https://registry.yarnpkg.com/@aws-sdk/client-lambda/-/client-lambda-3.226.0.tgz#2480751f1838c50912a3552f2eb0a673cb6777ae"
   integrity sha512-FyByw2FaraUxL/L66ctaug9KtQMrSo/XgRFxoSDdba97RZ3AHstsoSmuj6ftZPmpJ4GeritMJy1OnnJKuteyXw==
@@ -3602,10 +3602,15 @@ chalk@^4.0.0, chalk@^4.1.0, chalk@^4.1.1, chalk@^4.1.2:
     ansi-styles "^4.1.0"
     supports-color "^7.1.0"
 
-chalk@^5.0.1, chalk@^5.1.2:
+chalk@^5.0.1:
   version "5.1.2"
   resolved "https://registry.yarnpkg.com/chalk/-/chalk-5.1.2.tgz#d957f370038b75ac572471e83be4c5ca9f8e8c45"
   integrity sha512-E5CkT4jWURs1Vy5qGJye+XwCkNj7Od3Af7CP6SujMetSMkLs8Do2RWJK5yx1wamHV/op8Rz+9rltjaTQWDnEFQ==
+
+chalk@^5.2.0:
+  version "5.2.0"
+  resolved "https://registry.yarnpkg.com/chalk/-/chalk-5.2.0.tgz#249623b7d66869c673699fb66d65723e54dfcfb3"
+  integrity sha512-ree3Gqw/nazQAPuJJEy+avdl7QfZMcUvmHIKgEZkGL+xOBzRvup5Hxo6LHuMceSxOabuJLJm5Yp/92R9eMmMvA==
 
 char-regex@^1.0.2:
   version "1.0.2"
@@ -9037,18 +9042,18 @@ serverless-dotenv-plugin@4.0.2:
     dotenv "^16.0.1"
     dotenv-expand "^8.0.3"
 
-serverless-offline@12.0.1:
-  version "12.0.1"
-  resolved "https://registry.yarnpkg.com/serverless-offline/-/serverless-offline-12.0.1.tgz#ec6ed911548f2331a4844cadf65613bccb2b08b8"
-  integrity sha512-zo84yAzBwgBXO4V/1K9iBAIUuiddnoNB8tNu4IAk9Zygs+EzezBA9elsbW8d02zLQdVhUH2zk1t03RiltlASYw==
+serverless-offline@12.0.2:
+  version "12.0.2"
+  resolved "https://registry.yarnpkg.com/serverless-offline/-/serverless-offline-12.0.2.tgz#6b88187189fb01413187215468efff0b696406da"
+  integrity sha512-Lp8ums5NwSCqn91gyVHIxEPTTntjNQYD/nq/7/e+4ogyoKOQ3X0TI0lKwum2lXT2j9KT7v6KdSz9xzmbftZRFA==
   dependencies:
-    "@aws-sdk/client-lambda" "^3.224.0"
+    "@aws-sdk/client-lambda" "^3.226.0"
     "@hapi/boom" "^10.0.0"
     "@hapi/h2o2" "^10.0.0"
     "@hapi/hapi" "^21.1.0"
     "@serverless/utils" "^6.8.2"
     boxen "^7.0.0"
-    chalk "^5.1.2"
+    chalk "^5.2.0"
     execa "^6.1.0"
     fs-extra "^11.1.0"
     is-wsl "^2.2.0"
