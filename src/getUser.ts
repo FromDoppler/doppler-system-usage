@@ -1,10 +1,9 @@
-import { APIGatewayProxyHandler } from "aws-lambda";
 import { getUserService, getJwtFilter } from "./compositionRoot";
 
 const userService = getUserService();
 const jwtFilter = getJwtFilter();
 
-export const getUser: APIGatewayProxyHandler = async (event) =>
+export const getUser = async (event) =>
   jwtFilter.apply(
     event,
     { allowSuperUser: true, allowUserWithEmail: event.pathParameters["email"] },

@@ -1,4 +1,3 @@
-import { APIGatewayProxyEvent } from "aws-lambda";
 import { JwtFilter } from "./JwtFilter";
 import { JwtVerifier } from "./JwtVerifier";
 import { developmentPubKey, testDataTokens } from "./test-data";
@@ -52,7 +51,7 @@ describe(JwtFilter.name, () => {
       const result = await sut.apply(
         {
           headers: { authorization: `bearer ${token}` },
-        } as unknown as APIGatewayProxyEvent,
+        } as unknown,
         jwtFilterRules,
         async () => {
           return {
@@ -102,7 +101,7 @@ describe(JwtFilter.name, () => {
       const result = await sut.apply(
         {
           headers: { authorization: `bearer ${token}` },
-        } as unknown as APIGatewayProxyEvent,
+        } as unknown,
         jwtFilterRules,
         async () => {
           return {
@@ -153,7 +152,7 @@ describe(JwtFilter.name, () => {
       const result = await sut.apply(
         {
           headers: { authorization: `bearer ${token}` },
-        } as unknown as APIGatewayProxyEvent,
+        } as unknown,
         { allowSimplySignedToken: true },
         async () => {
           return {
@@ -196,7 +195,7 @@ describe(JwtFilter.name, () => {
       it(`Apply should fail for ${scenario}`, async () => {
         const sut = new JwtFilter({ jwtVerifier });
         const result = await sut.apply(
-          { headers } as unknown as APIGatewayProxyEvent,
+          { headers } as unknown,
           { allowSimplySignedToken: true },
           async () => {
             return {

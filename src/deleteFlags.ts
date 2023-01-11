@@ -1,10 +1,9 @@
-import { APIGatewayProxyHandler } from "aws-lambda";
 import { getUserService, getJwtFilter } from "./compositionRoot";
 
 const userService = getUserService();
 const jwtFilter = getJwtFilter();
 
-export const deleteFlags: APIGatewayProxyHandler = async (event) =>
+export const deleteFlags = async (event) =>
   jwtFilter.apply(
     event,
     {

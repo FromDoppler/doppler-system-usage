@@ -1,5 +1,4 @@
 import { JwtVerifier } from "./JwtVerifier";
-import { APIGatewayProxyEvent, APIGatewayProxyResult } from "aws-lambda";
 import { JsonWebTokenError, TokenExpiredError } from "jsonwebtoken";
 import { JwtFilterRules } from "./JwtFilterRules";
 
@@ -11,10 +10,10 @@ export class JwtFilter {
   }
 
   public async apply(
-    event: APIGatewayProxyEvent,
+    event,
     rules: JwtFilterRules,
-    action: () => Promise<APIGatewayProxyResult>
-  ): Promise<APIGatewayProxyResult> {
+    action: () => Promise<any>
+  ): Promise<any> {
     const authorizationHeader = event.headers["authorization"];
     if (!authorizationHeader) {
       return {
