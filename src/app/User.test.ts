@@ -1,4 +1,4 @@
-import { DynamoDB } from "aws-sdk";
+import { DynamoDocumentClient } from "src/shared/DynamoDocumentClient";
 import { createPromiseWrapper } from "../shared/utils";
 import { UserService } from "./UserService";
 
@@ -13,8 +13,10 @@ describe(UserService.name, () => {
 
       // Assert
       expect(dbClientDouble.get).toHaveBeenCalledWith({
-        Key: { email: "email1" },
-        TableName,
+        TableName: TableName,
+        Key: {
+          email: "email1",
+        },
       });
     });
 
@@ -58,7 +60,6 @@ describe(UserService.name, () => {
     it("Should pass the right data to db", async () => {
       // Arrange
       const date = new Date("Date Mon Oct 24 2022 17:21:08 GMT-0300");
-      const expectedValue = "2022-10-24T20:21:08.000Z";
       const { dbClientDouble, TableName, sut } = createTestContext();
 
       // Act
@@ -66,12 +67,14 @@ describe(UserService.name, () => {
 
       // Assert
       expect(dbClientDouble.update).toHaveBeenCalledWith({
-        TableName,
-        Key: { email: "email1" },
+        TableName: TableName,
+        Item: {
+          email: "email1",
+        },
         UpdateExpression:
           "set reportsSectionLastVisit = :reportsSectionLastVisit",
         ExpressionAttributeValues: {
-          ":reportsSectionLastVisit": expectedValue,
+          ":reportsSectionLastVisit": date.toISOString(),
         },
       });
     });
@@ -81,7 +84,6 @@ describe(UserService.name, () => {
     it("Should pass the right data to db", async () => {
       // Arrange
       const date = new Date("Date Wed Nov 02 2022 16:00:00 GMT-0300");
-      const expectedValue = "2022-11-02T19:00:00.000Z";
       const { dbClientDouble, TableName, sut } = createTestContext();
 
       // Act
@@ -89,11 +91,13 @@ describe(UserService.name, () => {
 
       // Assert
       expect(dbClientDouble.update).toHaveBeenCalledWith({
-        TableName,
-        Key: { email: "email1" },
+        TableName: TableName,
+        Item: {
+          email: "email1",
+        },
         UpdateExpression: "set firstStepsClosedSince = :firstStepsClosedSince",
         ExpressionAttributeValues: {
-          ":firstStepsClosedSince": expectedValue,
+          ":firstStepsClosedSince": date.toISOString(),
         },
       });
     });
@@ -109,8 +113,10 @@ describe(UserService.name, () => {
 
       // Assert
       expect(dbClientDouble.delete).toHaveBeenCalledWith({
-        TableName,
-        Key: { email: "email1" },
+        TableName: TableName,
+        Key: {
+          email: "email1",
+        },
       });
     });
   });
@@ -125,7 +131,7 @@ function createTestContext() {
   const userTableName = "userTableName";
   const sut = new UserService({
     userTableName,
-    dbClient: dbClientDouble as unknown as DynamoDB.DocumentClient,
+    dbClient: dbClientDouble as unknown as DynamoDocumentClient,
   });
   return { dbClientDouble, TableName: userTableName, sut };
 }
