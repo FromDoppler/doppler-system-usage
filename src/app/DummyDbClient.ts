@@ -1,19 +1,22 @@
-import * as DynamoDB from "aws-sdk/clients/dynamodb";
-import { createPromiseWrapperWithDelay } from "../shared/utils";
+import { IDocumentClient } from "src/shared/IDocumentClient";
+import { timeout } from "src/shared/utils";
 
-export function createDummyDynamoDbClient({
+export function createDummyDynamoDbDocumentClient({
   delay = 1000,
 }: {
   delay?: number;
-} = {}): DynamoDB.DocumentClient {
+} = {}): IDocumentClient {
   const dbClientDouble = {
-    update: () => createPromiseWrapperWithDelay(delay),
-    get: (key: DynamoDB.Key) =>
-      createPromiseWrapperWithDelay(delay, () => ({
+    update: async (parameters: Record<string, any>) => await timeout(delay),
+    get: async (parameters: Record<string, any>) => {
+      await timeout(delay);
+      return {
         Item: {
-          email: key.email,
+          email: parameters.Key.email,
         },
-      })),
+      };
+    },
+    delete: async (parameters: Record<string, any>) => await timeout(delay),
   };
-  return dbClientDouble as unknown as DynamoDB.DocumentClient;
+  return dbClientDouble;
 }
