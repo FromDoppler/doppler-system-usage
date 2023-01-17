@@ -1,5 +1,4 @@
-import { DynamoDB } from "aws-sdk";
-import { createPromiseWrapper } from "../shared/utils";
+import { IDocumentClient } from "src/shared/IDocumentClient";
 import { UserService } from "./UserService";
 
 describe(UserService.name, () => {
@@ -37,9 +36,9 @@ describe(UserService.name, () => {
       // Arrange
       const { dbClientDouble, sut } = createTestContext();
       dbClientDouble.get.mockImplementation(() =>
-        createPromiseWrapper(() => ({
+        Promise.resolve({
           Item: { email: "email1", name: "name1" },
-        }))
+        })
       );
 
       // Act
@@ -118,14 +117,14 @@ describe(UserService.name, () => {
 
 function createTestContext() {
   const dbClientDouble = {
-    update: jest.fn(() => createPromiseWrapper()),
-    get: jest.fn(() => createPromiseWrapper(() => ({ Item: undefined }))),
-    delete: jest.fn(() => createPromiseWrapper()),
+    update: jest.fn(() => Promise.resolve()),
+    get: jest.fn(() => Promise.resolve({ Item: undefined })),
+    delete: jest.fn(() => Promise.resolve()),
   };
   const userTableName = "userTableName";
   const sut = new UserService({
     userTableName,
-    dbClient: dbClientDouble as unknown as DynamoDB.DocumentClient,
+    dbClient: dbClientDouble as IDocumentClient,
   });
   return { dbClientDouble, TableName: userTableName, sut };
 }

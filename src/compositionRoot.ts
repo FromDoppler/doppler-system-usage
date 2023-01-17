@@ -1,16 +1,21 @@
-import { DynamoDB } from "aws-sdk";
+import { DynamoDBDocumentClient } from "@aws-sdk/lib-dynamodb";
+import { DynamoDBClient } from "@aws-sdk/client-dynamodb";
 import { UserService } from "./app/UserService";
-import { createDummyDynamoDbClient } from "./app/DummyDbClient";
+import { createDummyDynamoDbDocumentClient } from "./app/DummyDbClient";
 import { JwtFilter } from "./doppler-security/JwtFilter";
 import { JwtVerifier } from "./doppler-security/JwtVerifier";
+import { IDocumentClient } from "./shared/IDocumentClient";
+import { DynamoDocumentClient } from "./shared/DynamoDocumentClient";
 
-let _dbClientSingleton: DynamoDB.DocumentClient;
-function getDbClientSingleton(): DynamoDB.DocumentClient {
+let _dbClientSingleton: IDocumentClient;
+function getDbClientSingleton(): IDocumentClient {
   return (_dbClientSingleton =
     _dbClientSingleton ||
     (process.env.BEHAVIOR === "DUMMY"
-      ? createDummyDynamoDbClient()
-      : new DynamoDB.DocumentClient()));
+      ? createDummyDynamoDbDocumentClient()
+      : new DynamoDocumentClient(
+          DynamoDBDocumentClient.from(new DynamoDBClient({}))
+        )));
 }
 
 let _userServiceSingleton: UserService;
