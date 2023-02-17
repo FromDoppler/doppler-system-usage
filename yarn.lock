@@ -3450,10 +3450,10 @@ available-typed-arrays@^1.0.5:
   resolved "https://registry.npmjs.org/available-typed-arrays/-/available-typed-arrays-1.0.5.tgz"
   integrity sha512-DMD0KiN46eipeziST1LPP/STfDU0sufISXmjSgvVsoU2tqxctQeASejWcfNtxYKqETM1UxQ8sp2OrSBWpHY6sw==
 
-aws-sdk@^2.1313.0:
-  version "2.1313.0"
-  resolved "https://registry.yarnpkg.com/aws-sdk/-/aws-sdk-2.1313.0.tgz#e6dad914670fb3f4d5cd95c58413fca5ea5c6c86"
-  integrity sha512-8GMdtV2Uch3HL2c6+P3lNZFTcg/fqq9L3EWYRLb6ljCZvWKTssjdkjSJFDyTReNgeiKV224YRPYQbKpOEz4flQ==
+aws-sdk@^2.1317.0:
+  version "2.1317.0"
+  resolved "https://registry.yarnpkg.com/aws-sdk/-/aws-sdk-2.1317.0.tgz#b1534696b840654a55660eed467ed7ddbbb2e1d1"
+  integrity sha512-9gQ3ApcG4OhM19LEcmd/1jclwHvI3jjVaFYNQkY88g2eFJDW5T8qP+u2epdv+o3bPWxzg0TcyPhOSlN4xAnIJQ==
   dependencies:
     buffer "4.9.2"
     events "1.1.1"
@@ -9286,12 +9286,12 @@ serverless-bundle@6.0.0:
     webpack-node-externals "^2.5.2"
     webpack-permissions-plugin "^1.0.8"
 
-serverless-domain-manager@6.4.2:
-  version "6.4.2"
-  resolved "https://registry.yarnpkg.com/serverless-domain-manager/-/serverless-domain-manager-6.4.2.tgz#01534a926f367b4cceb7438af17967986b1fe498"
-  integrity sha512-svBqJ4p2C/5Fxe+40CDkfZbZqSY7iK7kABtJUD31MCIsK0yOO0LDGDTtQ4Hs/vdVsAl3rGOVw7tG0PdE/Zz+Sg==
+serverless-domain-manager@6.4.3:
+  version "6.4.3"
+  resolved "https://registry.yarnpkg.com/serverless-domain-manager/-/serverless-domain-manager-6.4.3.tgz#9c470322924232804e7417f4043686e0b5f285d8"
+  integrity sha512-CWWwelOrsXEewk8XWdcXusTKfCqqjWbDp+TEdgyIwBpIKaZZeh+hTRL0hknSHoAD1Suvwnp0YrH4aEiXR5XugA==
   dependencies:
-    aws-sdk "^2.1313.0"
+    aws-sdk "^2.1317.0"
 
 serverless-dotenv-plugin@4.0.2:
   version "4.0.2"
