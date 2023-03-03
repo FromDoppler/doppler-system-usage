@@ -4,6 +4,7 @@ import {
   GetCommand,
   UpdateCommand,
 } from "@aws-sdk/lib-dynamodb";
+import { NativeAttributeValue } from "@aws-sdk/util-dynamodb";
 import { IDocumentClient } from "./IDocumentClient";
 
 export class DynamoDocumentClient implements IDocumentClient {
@@ -13,7 +14,7 @@ export class DynamoDocumentClient implements IDocumentClient {
     Key,
     TableName,
   }: {
-    Key: Record<string, any>;
+    Key: Record<string, NativeAttributeValue>;
     TableName: string;
   }): Promise<{ Item?: Record<string, unknown> }> {
     return await this.dbDocumentClient.send(
@@ -29,10 +30,10 @@ export class DynamoDocumentClient implements IDocumentClient {
     UpdateExpression,
     ExpressionAttributeValues,
   }: {
-    Key: Record<string, any>;
+    Key: Record<string, NativeAttributeValue>;
     TableName: string;
     UpdateExpression: string;
-    ExpressionAttributeValues: Record<string, any>;
+    ExpressionAttributeValues: Record<string, NativeAttributeValue>;
   }): Promise<void> {
     await this.dbDocumentClient.send(
       new UpdateCommand({
@@ -47,7 +48,7 @@ export class DynamoDocumentClient implements IDocumentClient {
     Key,
     TableName,
   }: {
-    Key: Record<string, any>;
+    Key: Record<string, NativeAttributeValue>;
     TableName: string;
   }): Promise<void> {
     await this.dbDocumentClient.send(
