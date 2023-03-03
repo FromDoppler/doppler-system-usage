@@ -8,7 +8,7 @@ package:
 provider:
   name: aws
   region: ${env:REGION}
-  runtime: nodejs16.x
+  runtime: nodejs18.x
   architecture: arm64
   deploymentBucket:
     name: doppler-fun-${sls:stage}-${env:REGION}
