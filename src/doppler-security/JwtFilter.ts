@@ -10,11 +10,11 @@ export class JwtFilter {
     this._jwtVerifier = jwtVerifier;
   }
 
-  public async apply<T>(
+  public async apply(
     event: APIGatewayProxyEvent,
     rules: JwtFilterRules,
-    action: () => Promise<T | APIGatewayProxyResult>
-  ): Promise<T | APIGatewayProxyResult> {
+    action: () => Promise<APIGatewayProxyResult>
+  ): Promise<APIGatewayProxyResult> {
     const authorizationHeader = event.headers["authorization"];
     if (!authorizationHeader) {
       return {
