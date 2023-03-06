@@ -6,9 +6,9 @@ export function createDummyDynamoDbDocumentClient({
 }: {
   delay?: number;
 } = {}): IDocumentClient {
-  const dbClientDouble = {
-    update: async (parameters: Record<string, any>) => await timeout(delay),
-    get: async (parameters: Record<string, any>) => {
+  const dbClientDouble: IDocumentClient = {
+    update: async () => await timeout(delay),
+    get: async (parameters) => {
       await timeout(delay);
       return {
         Item: {
@@ -16,7 +16,7 @@ export function createDummyDynamoDbDocumentClient({
         },
       };
     },
-    delete: async (parameters: Record<string, any>) => await timeout(delay),
+    delete: async () => await timeout(delay),
   };
   return dbClientDouble;
 }

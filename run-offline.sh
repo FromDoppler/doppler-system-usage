@@ -39,4 +39,7 @@ case $i in
 esac
 done
 
+set -a
+. "./.env.offline"
+set +a
 serverless offline --stage offline --config serverless.yml
