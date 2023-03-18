@@ -9293,10 +9293,10 @@ serverless-domain-manager@6.4.4:
   dependencies:
     aws-sdk "^2.1322.0"
 
-serverless-dotenv-plugin@4.0.2:
-  version "4.0.2"
-  resolved "https://registry.yarnpkg.com/serverless-dotenv-plugin/-/serverless-dotenv-plugin-4.0.2.tgz#98c09236f487496235c89308090551b3ce6e15a3"
-  integrity sha512-MOXsSSuJPMAiNp7bVvvCC+ahmEMMohlaPpaVU2w4wFgMVSvs+BU7xIwQGv/7TTMNdjYVS/W2JoS5ZSkCdjHzCg==
+serverless-dotenv-plugin@5.0.0:
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/serverless-dotenv-plugin/-/serverless-dotenv-plugin-5.0.0.tgz#af1a2b43a487d5a08ab1a57b8341b8c55c2fb8a8"
+  integrity sha512-z2W0gVLii229BqVCE6QhvIQfGj95izr/RgsS95gcJVlOKAp0YLP6dk0ETSzsjdnkU0fuX3rjagEZI/vZmWNFhg==
   dependencies:
     chalk "^4.1.2"
     dotenv "^16.0.1"
