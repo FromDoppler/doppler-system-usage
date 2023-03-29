@@ -16,6 +16,7 @@ export MSYS_NO_PATHCONV=1
 export MSYS2_ARG_CONV_EXCL="*"
 
 environment=""
+suffix=""
 
 print_help () {
     echo ""
@@ -25,6 +26,7 @@ print_help () {
     echo ""
     echo "Options:"
     echo "  -e, --environment (\"int\"|\"qa\"|\"production\") (mandatory)"
+    echo "  -s, --suffix"
     echo "  -h, --help"
     echo
     echo "Examples:"
@@ -38,6 +40,9 @@ for i in "$@" ; do
 case $i in
     -e=*|--environment=*)
     environment="${i#*=}"
+    ;;
+    -s=*|--suffix=*)
+    suffix="${i#*=}"
     ;;
     -h|--help)
     print_help
@@ -58,4 +63,5 @@ if [ "${environment}" != "int" ] && [ "${environment}" != "qa" ] && [ "${environ
     exit 1
 fi
 
+export PACKAGE_SUFFIX="${suffix}"
 serverless deploy --stage "${environment}" --config serverless.yml

@@ -17,6 +17,7 @@ export MSYS2_ARG_CONV_EXCL="*"
 
 commit=""
 environment=""
+suffix=""
 
 print_help () {
     echo ""
@@ -27,12 +28,13 @@ print_help () {
     echo ""
     echo "Options:"
     echo "  -e, --environment (\"int\"|\"qa\"|\"production\") (mandatory)"
+    echo "  -s, --suffix"
     echo "  -c, --commit (mandatory)"
     echo "  -h, --help"
     echo
     echo "Examples:"
-    echo "  sh build-n-publish.sh.sh -c=aee25c286a7c8265e2b32ccc293f5ab0bd7a9d57 -e=production"
-    echo "  sh build-n-publish.sh.sh --commit=aee25c286a7c8265e2b32ccc293f5ab0bd7a9d57 -0-environment=production"
+    echo "  sh build-n-publish.sh.sh -c=aee25c286a7c8265e2b32ccc293f5ab0bd7a9d57 -e=production -s=_new"
+    echo "  sh build-n-publish.sh.sh --commit=aee25c286a7c8265e2b32ccc293f5ab0bd7a9d57 --environment=production"
 }
 
 # serverless config credentials --provider aws --key YOUR_AWS_ACCESS_KEY --secret YOUR_AWS_SECRET_KEY
@@ -42,6 +44,9 @@ for i in "$@" ; do
 case $i in
     -e=*|--environment=*)
     environment="${i#*=}"
+    ;;
+    -s=*|--suffix=*)
+    suffix="${i#*=}"
     ;;
     -c=*|--commit=*)
     commit="${i#*=}"
@@ -83,5 +88,5 @@ docker run --rm \
   -e AWS_SECRET_ACCESS_KEY \
   "${tag}" \
   /bin/sh -c "\
-    sh ci-deploy.sh --environment=${environment} \
+    sh ci-deploy.sh --environment=${environment} --suffix=${suffix} \
     "

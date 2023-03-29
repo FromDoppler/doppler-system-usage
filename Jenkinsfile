@@ -50,7 +50,8 @@ pipeline {
                         sh '''
                           sh build-n-publish.sh \
                             --commit=${GIT_COMMIT} \
-                            --environment=qa
+                            --environment=qa \
+                            --suffix=${PACKAGE_SUFFIX}
                           '''
                     }
                 }
@@ -62,7 +63,8 @@ pipeline {
                         sh '''
                           sh build-n-publish.sh \
                             --commit=${GIT_COMMIT} \
-                            --environment=int
+                            --environment=int \
+                            --suffix=${PACKAGE_SUFFIX}
                           '''
                     }
                 }
@@ -76,7 +78,8 @@ pipeline {
                         sh '''
                           sh build-n-publish.sh \
                             --commit=${GIT_COMMIT} \
-                            --environment=production
+                            --environment=production \
+                            --suffix=${PACKAGE_SUFFIX}
                           '''
                     }
                 }
