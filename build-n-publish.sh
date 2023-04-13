@@ -28,7 +28,6 @@ print_help () {
     echo ""
     echo "Options:"
     echo "  -e, --environment (\"int\"|\"qa\"|\"production\") (mandatory)"
-    echo "  -s, --suffix"
     echo "  -c, --commit (mandatory)"
     echo "  -h, --help"
     echo
@@ -44,9 +43,6 @@ for i in "$@" ; do
 case $i in
     -e=*|--environment=*)
     environment="${i#*=}"
-    ;;
-    -s=*|--suffix=*)
-    suffix="${i#*=}"
     ;;
     -c=*|--commit=*)
     commit="${i#*=}"
@@ -88,5 +84,5 @@ docker run --rm \
   -e AWS_SECRET_ACCESS_KEY \
   "${tag}" \
   /bin/sh -c "\
-    sh ci-deploy.sh --environment=${environment} --suffix=${suffix} \
+    sh ci-deploy.sh --environment=${environment} \
     "

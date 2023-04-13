@@ -11,7 +11,7 @@ provider:
   runtime: nodejs18.x
   architecture: arm64
   deploymentBucket:
-    name: doppler-fun-${sls:stage}${env:PACKAGE_SUFFIX}-${env:REGION}
+    name: doppler-fun-${sls:stage}-${env:REGION}
 
   httpApi:
     shouldStartNameWithService: true
@@ -53,10 +53,10 @@ provider:
             - "dynamodb:UpdateItem"
             - "dynamodb:DeleteItem"
           Resource: "arn:aws:dynamodb:${env:REGION}:${aws:accountId}:table\
-            /${self:service}-${sls:stage}${env:PACKAGE_SUFFIX}-user"
+            /${self:service}-${sls:stage}-user"
 
   environment:
-    DYNAMODB_USER_TABLE: ${self:service}-${sls:stage}${env:PACKAGE_SUFFIX}-user
+    DYNAMODB_USER_TABLE: ${self:service}-${sls:stage}-user
 
 plugins:
   - serverless-bundle
@@ -102,7 +102,7 @@ resources:
         KeySchema:
           - AttributeName: email
             KeyType: HASH
-        TableName: ${self:service}-${sls:stage}${env:PACKAGE_SUFFIX}-user
+        TableName: ${self:service}-${sls:stage}-user
 
 custom:
   serverless-offline:
