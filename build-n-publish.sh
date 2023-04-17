@@ -17,7 +17,6 @@ export MSYS2_ARG_CONV_EXCL="*"
 
 commit=""
 environment=""
-suffix=""
 
 print_help () {
     echo ""
