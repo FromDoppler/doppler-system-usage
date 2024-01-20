@@ -28,7 +28,7 @@
     "@types/jsonwebtoken": "9.0.2",
     "eclint": "2.8.1",
     "prettier": "2.8.8",
-    "serverless-bundle": "6.0.0",
+    "serverless-bundle": "6.1.0",
     "serverless-domain-manager": "7.3.3",
     "serverless-dotenv-plugin": "6.0.0",
     "serverless-offline": "13.3.3"
