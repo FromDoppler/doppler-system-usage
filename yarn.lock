@@ -10367,10 +10367,10 @@ serverless-bundle@6.1.0:
     webpack-node-externals "^2.5.2"
     webpack-permissions-plugin "^1.0.8"
 
-serverless-domain-manager@7.3.5:
-  version "7.3.5"
-  resolved "https://registry.yarnpkg.com/serverless-domain-manager/-/serverless-domain-manager-7.3.5.tgz#4483c0270e19cafd463fe88b83eafc936879be91"
-  integrity sha512-PYrYcZUGCvIz/Yoczg/XmPadzgyPkViCubCi+HJc5LHhKEPdVO6mfxlEgDgkzK0HEmmwsUpNTIAJt0A0TNJwCw==
+serverless-domain-manager@7.3.6:
+  version "7.3.6"
+  resolved "https://registry.yarnpkg.com/serverless-domain-manager/-/serverless-domain-manager-7.3.6.tgz#ae51cbdaf1aa12d51865c2c6f41ce4214caa7d39"
+  integrity sha512-QIMIakpTaKhwO66FLV5KKzRZ4GF0O33AyqhmABuZq8VJ/SRTbxTTItK0G7EnGQWo4CA5ofXSMyK/qr4+8M25KQ==
   dependencies:
     "@aws-sdk/client-acm" "^3.460.0"
     "@aws-sdk/client-api-gateway" "^3.460.0"
