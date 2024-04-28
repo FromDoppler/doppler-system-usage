@@ -31,6 +31,6 @@
     "serverless-bundle": "6.1.0",
     "serverless-domain-manager": "7.3.8",
     "serverless-dotenv-plugin": "6.0.0",
-    "serverless-offline": "13.4.0"
+    "serverless-offline": "13.5.0"
   }
 }
