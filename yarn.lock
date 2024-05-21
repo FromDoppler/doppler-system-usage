@@ -10284,10 +10284,10 @@ serverless-dotenv-plugin@6.0.0:
     dotenv "^16.0.3"
     dotenv-expand "^10.0.0"
 
-serverless-offline@13.5.1:
-  version "13.5.1"
-  resolved "https://registry.yarnpkg.com/serverless-offline/-/serverless-offline-13.5.1.tgz#3d480684120ffcf6fb55abd0a8eba147d3e642c2"
-  integrity sha512-Hc4QU2Gb2wyoATFlwRfCtpqSBn+lOyWmFS2amr95+2VOBOArtPuOcL65ezNeO5xH9Efuz7FRitN62KikTXU2tg==
+serverless-offline@13.6.0:
+  version "13.6.0"
+  resolved "https://registry.yarnpkg.com/serverless-offline/-/serverless-offline-13.6.0.tgz#1f102ed797ebe562511bd00d92986700c6533a1f"
+  integrity sha512-aSMg9TNfFjVj4QFmHqPzLwbwCSVmrpeoe96ozOXaesn2VX+4lyS+kTF1TXh4pZd5/ef9cfcma3jcqmgnShrUyA==
   dependencies:
     "@aws-sdk/client-lambda" "^3.509.0"
     "@hapi/boom" "^10.0.1"
