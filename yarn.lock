@@ -9822,10 +9822,10 @@ serverless-dotenv-plugin@6.0.0:
     dotenv "^16.0.3"
     dotenv-expand "^10.0.0"
 
-serverless-offline@14.3.3:
-  version "14.3.3"
-  resolved "https://registry.yarnpkg.com/serverless-offline/-/serverless-offline-14.3.3.tgz#c6af45dc3d1ca9aba0eca0251aceea0ae57e79be"
-  integrity sha512-q/m/5BclrBQiF9mqfvGl2xCz+hs5+MGwdTou6tq/Jud+bExdF3rofl/bKVu7ahlV7FIjOo0Xfa0LLI404oL61g==
+serverless-offline@14.3.4:
+  version "14.3.4"
+  resolved "https://registry.yarnpkg.com/serverless-offline/-/serverless-offline-14.3.4.tgz#b8d803ab6f2fa41fca08ff1c08a343f5e174486e"
+  integrity sha512-PlLyllDHSHSVCv3vcRT5fFxSyjDBVHMLirzzfBK0NTG7JvL90mQvSedBGncHD2XcaPvjxo8ZW6OfEMEe9nQKuQ==
   dependencies:
     "@aws-sdk/client-lambda" "^3.636.0"
     "@hapi/boom" "^10.0.1"
