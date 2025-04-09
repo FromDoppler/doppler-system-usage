@@ -23,7 +23,7 @@
     "prettier-check": "prettier --check \"**/**\""
   },
   "devDependencies": {
-    "@types/aws-lambda": "8.10.148",
+    "@types/aws-lambda": "8.10.149",
     "@types/jest": "29.5.14",
     "@types/jsonwebtoken": "9.0.2",
     "eclint": "2.8.1",
