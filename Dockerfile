@@ -3,7 +3,7 @@ WORKDIR /src
 COPY ./*.sh ./
 RUN shellcheck -e SC1091,SC1090 ./*.sh
 
-FROM amaysim/serverless:3.28.1 AS restore
+FROM amaysim/serverless:3.39.0 AS restore
 WORKDIR /src
 COPY package.json yarn.lock ./
 RUN yarn
